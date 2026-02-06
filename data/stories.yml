@@ -1,0 +1,100 @@
+version: "3.1"
+
+stories:
+
+- story: User asks for similar movies directly
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_similar_movies
+    entities:
+    - movie_name: "Batman"
+  - slot_was_set:
+    - movie_name: "Batman"
+  - action: action_find_similar_movies
+
+- story: User asks for similar movies using context
+  steps:
+  - intent: ask_movie_details
+    entities:
+    - movie_name: "Inception"
+  - action: action_get_movie_details
+  - slot_was_set:
+    - movie_name: "Inception"
+  - intent: ask_similar_movies 
+  - action: action_find_similar_movies
+
+- story: Ask for details then Book (using context)
+  steps:
+  - intent: ask_movie_details
+    entities:
+    - movie_name: "Deadpool"
+  - action: action_get_movie_details
+  - slot_was_set:
+    - movie_name: "Deadpool"
+  - intent: book_ticket
+  - action: action_book_ticket
+
+- story: Book a movie ticket with entity provided
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: book_ticket
+    entities:
+    - movie_name: "The Avengers"
+  - slot_was_set:
+    - movie_name: "The Avengers"
+  - action: action_book_ticket
+
+- story: Book a movie ticket interactively
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: book_ticket
+  - action: utter_ask_movie_name
+  - intent: inform_movie
+    entities:
+    - movie_name: "Avatar"
+  - action: action_book_ticket
+
+- story: Ask for details then book
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_movie_details 
+    entities:
+    - movie_name: "dedpool"
+  - action: action_get_movie_details
+  - slot_was_set:
+    - movie_name: "Deadpool"
+  - intent: book_ticket
+  - action: action_book_ticket
+
+- story: Cancel booking
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: cancel_ticket
+  - action: action_cancel_ticket
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: Modify ticket count
+  steps:
+  - intent: modify_ticket_count
+    entities:
+    - ticket_count: "3"
+  - slot_was_set:
+    - ticket_count: "3"
+  - action: action_modify_ticket_count
+
+- story: User modifies booking
+  steps:
+  - intent: book_ticket
+  - action: action_book_ticket
+  - slot_was_set:
+    - ticket_count: 2
+  - intent: modify_ticket_count
+  - action: action_modify_ticket_count
+  - slot_was_set:
+    - ticket_count: 4

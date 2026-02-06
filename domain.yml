@@ -1,0 +1,58 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - book_ticket
+  - cancel_ticket       
+  - modify_ticket_count 
+  - inform_movie
+  - ask_movie_details
+  - ask_similar_movies
+  - bot_challenge       
+
+entities:
+  - movie_name
+  - ticket_count
+
+actions:
+  - action_book_ticket
+  - action_cancel_ticket
+  - action_modify_ticket_count
+  - action_get_movie_details
+  - action_find_similar_movies
+
+slots:
+  movie_name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: movie_name
+
+  ticket_count:
+      type: float
+      influence_conversation: false
+      mappings:
+        - type: from_entity
+          entity: ticket_count
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_goodbye:
+  - text: "Enjoy your movie!"
+
+  utter_ask_movie_name:
+  - text: "Which movie would you like to see?"
+
+  utter_ask_ticket_count:
+  - text: "How many tickets do you need?"
+
+  utter_iamabot:
+  - text: "I am a bot, that helps you book a ticket for a movie! Feel free to ask me about the movie you would like to watch!"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

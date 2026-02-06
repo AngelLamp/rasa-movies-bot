@@ -1,0 +1,139 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- lookup: movie_name
+  examples: |
+    - data\movies.txt
+
+- intent: ask_similar_movies
+  examples: |
+    - find similar movies
+    - what is like [Captain America](movie_name)?
+    - recommend something like [Hulk](movie_name)
+    - movies similar to [A Clockwork Orange](movie_name)
+    - is there any movie similar to [Kill Bill](movie_name)?
+
+- intent: book_ticket
+  examples: |
+    - I want to book a ticket
+    - I need a ticket for [The Batman](movie_name)
+    - Book a seat for [Iron Man](movie_name) please
+    - Can I get tickets for [Inception](movie_name)?
+    - I want to watch [Frozen](movie_name)
+    - book [Avatar](movie_name)
+    - I want to see [Superman](movie_name)
+    - Get me a seat for [Joker](movie_name)
+    - Book [6](ticket_count) tickets for [Four Rooms](movie_name)
+    - I want [2](ticket_count) tickets to see [Batman](movie_name)
+    - reserve [3](ticket_count) seats for [Joker](movie_name)
+    - get me [one](ticket_count) ticket for [Avatar](movie_name)
+    - book [5](ticket_count) spots for [Pulp Fiction](movie_name)
+    - Book [2](ticket_count) tickets for [The Incredibles](movie_name)
+    - I want [3](ticket_count) seats for [Fantastic 4](movie_name)
+    - reserve [5](ticket_count) tickets for [Iron Man 3](movie_name)
+    - Book a ticket for [The Incredibles](movie_name)
+    - get me [2](ticket_count) tickets
+
+- intent: ask_movie_details
+  examples: |
+    - I want info on [Batman](movie_name)
+    - what is the plot of [Avatar](movie_name)?
+    - tell me about [The Matrix](movie_name)
+    - give me info on [Deadpool](movie_name)
+    - who is in [Iron Man](movie_name)?
+    - what is [Titanic](movie_name) about?
+    - I want to know about [Transporter](movie_name)
+    - details for [Pulp Fiction](movie_name)
+    - Tell me about the movie
+    - What is the plot?
+    - give me details
+    - tell me more
+    - give me the summary
+    - what is it about?
+    - can I have some information?
+    - tell me about [The Lord of the Rings: The Fellowship of the Ring](movie_name)   
+    - [The Lord of the Rings](movie_name) info    
+    - plot for [The Lord of the Rings: The Two Towers](movie_name)
+    - Tell me about [The Fantastic 4: First Steps](movie_name)
+    - info on [Fantastic 4](movie_name)
+    - [Iron Man 2](movie_name)
+    - [Ocean's 11](movie_name)
+    - [Toy Story 3](movie_name)
+    - [Deadpool 2](movie_name)
+    - I want info on [Jurassic World Rebirth](movie_name)
+
+- intent: inform_movie
+  examples: |
+    - [Spider-Man](movie_name)
+    - [The Godfather](movie_name)
+    - [Toy Story](movie_name)
+    - It is [Titanic](movie_name)
+
+- intent: cancel_ticket
+  examples: |
+    - Cancel my ticket
+    - I want to cancel my booking
+    - remove my reservation
+    - delete my ticket please
+
+- intent: modify_ticket_count
+  examples: |
+    - I want to change the number of tickets
+    - Change my booking to [3](ticket_count) tickets
+    - Actually make it [two](ticket_count) people
+    - I need [5](ticket_count) seats instead
+    - change my booking to [4](ticket_count) tickets
+    - actually I need [eight](ticket_count) seats
+    - make it [one](ticket_count) ticket please
+    
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+# Adding words as synonyms for movies; movie titles can vary - easier, more natural communication, but hard for efficient implementation.
+# small patch to check for further development
+
+- synonym: The Lord of the Rings
+  examples: |
+    - LoTR
+    - Lord of the Rings
+    - Fellowship of the Ring
+
+- synonym: Spider-Man
+  examples: |
+    - Spidey
+    - Spider man
+    - Spiderman

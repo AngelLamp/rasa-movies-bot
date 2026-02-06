@@ -1,0 +1,63 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+
+stories:
+- story: test_booking_path_1
+  steps:
+  - user: |
+      hello
+    intent: greet
+  - action: utter_greet
+  - user: |
+      I want a ticket for The Matrix
+    intent: book_ticket
+    entities:
+      - movie_name: "The Matrix"
+  - action: action_book_ticket
+
+- story: test_booking_path_2
+  steps:
+  - user: |
+      I want to book a ticket
+    intent: book_ticket
+  - action: utter_ask_movie_name
+  - user: |
+      Lord of the Rings
+    intent: inform_movie
+    entities:
+      - movie_name: "Lord of the Rings"
+  - action: action_book_ticket
+
+- story: test_modification
+  steps:
+  - user: |
+      change my booking to 3 tickets
+    intent: modify_ticket_count
+    entities:
+      - ticket_count: "3"
+  - action: action_modify_ticket_count
+
+- story: test_cancellation
+  steps:
+  - user: |
+      cancel my ticket
+    intent: cancel_ticket
+  - action: action_cancel_ticket
+  - user: |
+      bye
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: say goodbye
+  steps:
+  - user: |
+      bye-bye!
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: bot challenge
+  steps:
+  - user: |
+      are you a bot?
+    intent: bot_challenge
+  - action: utter_iamabot
