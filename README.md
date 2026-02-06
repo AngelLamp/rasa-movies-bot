@@ -2,9 +2,10 @@
 
 Rasa chatbot for movie suggestions and cinema ticket booking
 
-This chatbot is designed to make movie suggestions using a movie as an example, provide information about the movies and help the user book, modify or cancel a movie screening reservation.
+This chatbot is designed to make movie suggestions using a movie as an example, provide information about the movies and help the user book, modify or cancel a movie screening reservation. For an elaborate presentation: https://github.com/AngelLamp/rasa-movies-bot/blob/main/Rasa%20-%20chatbot.pdf
 
 Motivation for choosing this specific domain and capabilities underlies in the sudden rise of streaming platforms in the past recent years in correlation to the sudden drop of visitors in movie theaters. Through this application, users get to benefit from the perk that comes with streaming platforms (movie suggestions based on what they like/have already seen) while providing easier access to booking a movie ticket to watch the movie they chose. Inspiration behind this kind of implementation was Cinobo (https://cinobo.com/en/); a movie theater that also offers streaming services for many movies and series.
+
 The domain covers intents:
 
 *  greet
